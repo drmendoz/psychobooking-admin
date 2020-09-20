@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Bookings</li>
+    </ol>
+      <div class="box_general">
+          <div class="header_box">
+              <h2 class="d-inline-block">Bookings List</h2>
+              <div class="filter">
+                  <select name="orderby" class="selectbox">
+                      <option value="Any status">Any status</option>
+                      <option value="Approved">Approved</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Cancelled">Cancelled</option>
+                  </select>
+              </div>
+          </div>
+          <div class="list_general">
+              <ul>
+                  <li *ngFor="let cita of citas">
+                      <figure><img [src]="cita.TratamientoCita.PsicologoTratamiento.UsuarioPsicologo.imagen" alt=""></figure>
+                      <h4>{{cita.TratamientoCita.PsicologoTratamiento.UsuarioPsicologo.nombre}} <i  *ngIf="cita.estado_cita=='P'" class="pending">Pendiente</i><i  *ngIf="cita.estado_cita=='A'" class="approved">Aprobada</i> <i  *ngIf="cita.estado_cita=='C'" class="cancel">Cancelada</i></h4>
+                      <ul class="booking_details">
+                          <li><strong>Fecha reserva</strong>{{cita.fecha}}</li>
+                          <li><strong>Detalles reserva</strong>{{cita.motivo}}</li>
+                          <li><strong>Telefono</strong> {{cita.TratamientoCita.PsicologoTratamiento.UsuarioPsicologo.telefono}}</li>
+                          <li><strong>Email</strong> {{cita.TratamientoCita.PsicologoTratamiento.UsuarioPsicologo.email}}</li>
+                      </ul>
+                      <ul class="buttons">
+                          <li><a (click)="changeEstadoCita(cita.id,'A')" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Aprobar</a></li>                       
+                          <li><a (click)="changeEstadoCita(cita.id,'C')" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancelar</a></li>
+                          <li><a (click)="changeCita(cita.id,'I')" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Eliminar</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <!-- /box_general-->
+      <nav aria-label="...">
+          <ul class="pagination pagination-sm add_bottom_30">
+              <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+              </li>
+          </ul>
+      </nav>
+      <!-- /pagination-->
+    </div>

@@ -1,0 +1,13 @@
+<h1 class="text-center">Clasificacion de consultas por ratings</h1>
+<div *ngIf="!service.loading">
+    <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType">
+            [options]="pieChartOptions"
+            [plugins]="pieChartPlugins"
+            [colors]="pieChartColors"
+            [legend]="pieChartLegend"
+    </canvas>
+</div>
+
